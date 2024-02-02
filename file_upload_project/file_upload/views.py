@@ -1,9 +1,10 @@
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.response import Response
-from rest_framework import viewsets
+
 from .models import File
 from .serializers import FileSerializer
 from .tasks import process_file
+
 
 class FileUploadViewSet(viewsets.ModelViewSet):
 

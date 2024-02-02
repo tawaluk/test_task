@@ -2,7 +2,6 @@ from pathlib import Path
 
 from celery import Celery
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-7o214g1!vwv-v=l3jspypu8%%q9!)llb*vu4cng0+*ouxr--$+'
@@ -89,6 +88,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Celery and Redis
 app = Celery('file_upload_project')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()

@@ -1,5 +1,7 @@
 from celery import shared_task
+
 from .models import File
+
 
 @shared_task
 def process_file(file_id):
