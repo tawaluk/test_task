@@ -9,3 +9,6 @@ class FileSerializer(serializers.ModelSerializer):
 
         model = File
         fields = ("id", "file", "uploaded_at", "processed")
+
+
+# валидация мета
