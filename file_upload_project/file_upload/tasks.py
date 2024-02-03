@@ -1,4 +1,4 @@
-from celery import shared_task
+from celery import Celery, shared_task
 
 from .models import File
 import time
@@ -10,3 +10,4 @@ def process_file(file_id):
     file = File.objects.get(id=file_id)
     file.processed = True
     file.save()
+

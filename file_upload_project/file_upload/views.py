@@ -15,7 +15,9 @@ class FileUploadViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         file = serializer.save()
-
+        file_obj_id: str = file.id
+        #process_file.apply_async(args=(file_obj_id,), countdown=2)
+        process_file.delay(file_obj_id)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
