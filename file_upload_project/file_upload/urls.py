@@ -7,7 +7,7 @@ app_name = 'api'
 router = DefaultRouter()
 
 router.register(prefix="upload", viewset=FileUploadViewSet, basename="upload")
-router.register(prefix="file", viewset=FileListViewSet)
+router.register(prefix="file", viewset=FileListViewSet, basename="file")
 
 urlpatterns = [
     path("", include(router.urls)),

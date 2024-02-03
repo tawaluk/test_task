@@ -2,16 +2,18 @@ import os
 
 from pathlib import Path
 
+from dotenv import load_dotenv
 from celery import Celery
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-7o214g1!vwv-v=l3jspypu8%%q9!)llb*vu4cng0+*ouxr--$+'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
+DEBUG = os.getenv('DEBUG', default='False') == 'True'
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(' ')
 
 INSTALLED_APPS = [
     # def
