@@ -5,10 +5,14 @@ from .models import File
 
 class FileSerializer(serializers.ModelSerializer):
 
+    file = serializers.FileField()
+
     def validate_file(self, file):
         
-        if file.size > 100000000:  # Пример: ограничение размера файла до 100 МБ
-            raise serializers.ValidationError("File size should not exceed 100 MB.")
+        if file.size > 100000000:  # ограничение размера файла до 100 МБ
+            raise serializers.ValidationError(
+                "File size should not exceed 100 MB."
+                )
         return file
 
     class Meta:
